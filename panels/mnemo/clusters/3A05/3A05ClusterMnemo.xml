@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="ru_RU.utf8"></prop>
+  </prop>
+  <prop name="Size">1717 1017</prop>
+  <prop name="BackColor">sd_grey_almost_white</prop>
+  <prop name="RefPoint">10 10</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">120</prop>
+  <prop name="PDPI">141.5847518580676</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script name="ScopeLib" isEscaped="1"><![CDATA[bool linkRSU;]]></script>
+  <script name="Initialize" isEscaped="1"><![CDATA[main()
+{
+  dpConnect(&quot;modConnectRSU&quot;,
+            &quot;System1:_Mod_Plc_4.ConnState:_online.._value&quot;,
+            &quot;System1:_Mod_Plc_4_2.ConnState:_online.._value&quot;);
+}
+
+void modConnectRSU(string dpe1, int stateHost1,
+                   string dpe2, int stateHost2) {
+  if (stateHost1 != 1 &amp;&amp; stateHost2 != 1)
+  {
+    linkRSU = false;
+    ModConnRSU.visible = true;
+  } else {
+    linkRSU = true;
+    ModConnRSU.visible = false;
+  }
+  if (!linkRSU) {
+    this.backCol = &quot;WF_Border&quot;;
+  } else {
+    this.backCol = &quot;White&quot;;
+  }
+}
+]]></script>
+ </events>
+ <shapes>
+  <shape Name="backplate" shapeType="RECTANGLE" layerId="0">
+   <properties>
+    <prop name="serialId">1</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">80 170</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">{0,0,0}</prop>
+    <prop name="BackColor">sd_grey_ultra_light</prop>
+    <prop name="TabOrder">0</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[none,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">8.071428571428571 0 0 0.4875 -635.7142857142859 -72.875</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">80 170</prop>
+    <prop name="Size">211 81</prop>
+    <prop name="CornerRadius">4</prop>
+    <prop name="Transformable">False</prop>
+   </properties>
+  </shape>
+  <shape Name="mnemoTitle" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">2</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">1660 673.0000000000007</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_grey_darken</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="minimumSize">100 -1</prop>
+    <prop name="layoutAlignment">AlignLeft|AlignLeading</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Geometry">1.455882352941138 0 0 1.441176470588232 -2387.264705882289 -941.1323529411741</prop>
+    <prop name="Location">1660 673.0000000000007</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Arial,-1,15,5,75,0,0,0,0,0,Полужирный</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">Куст 3A05</prop>
+    </prop>
+    <prop name="Distance">0</prop>
+    <prop name="BorderOffset">0</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft|AlignVCenter]</prop>
+   </properties>
+  </shape>
+  <reference parentSerial="-1" Name="PANEL_REF1" referenceId="0">
+   <properties>
+    <prop name="FileName">objects/connectionState.xml</prop>
+    <prop name="Location">139.9558823529387 15.5</prop>
+    <prop name="Geometry">1 0 0 1 0 4.5</prop>
+    <prop name="TabOrder">2</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$dpe</prop>
+      <prop name="Value">System1:_Mod_Plc_4.ConnState</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF2" referenceId="1">
+   <properties>
+    <prop name="FileName">objects/fireState.xml</prop>
+    <prop name="Location">178.9558823529387 20</prop>
+    <prop name="TabOrder">3</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$bInversion</prop>
+      <prop name="Value">FALSE</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$dpe</prop>
+      <prop name="Value">$dpe</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <shape Name="locksBtn" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">6</prop>
+    <prop name="Type">NU_BUTTONS</prop>
+    <prop name="RefPoint">352.6215538847117 18.25</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">5</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="minimumSize">125 24</prop>
+    <prop name="maximumSize">125 24</prop>
+    <prop name="sizePolicy">
+     <sizePolicy vertical="Fixed" horizontal="Fixed"/>
+    </prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Noto Sans,-1,20,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">352 18.25</prop>
+    <prop name="Size">125 24</prop>
+    <prop name="BorderStyle">Styled</prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">Блокировки</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(mapping event)
+{
+  ChildPanelOnCentral(&quot;faceplates/locks/clusterLocks.xml&quot;, &quot;Блокировки 3A05&quot;,
+                      makeDynString(&quot;$sClusterTitle:3A05&quot;));
+}
+]]></script>
+   </events>
+  </shape>
+  <shape Name="blockSuvkoBtn" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">7</prop>
+    <prop name="Type">NU_BUTTONS</prop>
+    <prop name="RefPoint">486.6215538847118 18.25</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">6</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="minimumSize">125 24</prop>
+    <prop name="maximumSize">125 24</prop>
+    <prop name="sizePolicy">
+     <sizePolicy vertical="Fixed" horizontal="Fixed"/>
+    </prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Noto Sans,-1,20,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">486.0000000000001 18.25</prop>
+    <prop name="Size">125 24</prop>
+    <prop name="BorderStyle">Styled</prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">Блок УС</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(mapping event)
+{
+  ChildPanelOnCentral(&quot;faceplates/blockSUVKO.xml&quot;, &quot;Блок УС, куст 3A05&quot;,
+                      makeDynString(&quot;$sClusterTitle:3A05&quot;,
+                                    &quot;$iWellsNumber:7&quot;));
+}
+]]></script>
+   </events>
+  </shape>
+  <shape Name="belpBtn" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">8</prop>
+    <prop name="Type">NU_BUTTONS</prop>
+    <prop name="RefPoint">620.6215538847117 18.25</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">7</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="minimumSize">125 24</prop>
+    <prop name="maximumSize">125 24</prop>
+    <prop name="sizePolicy">
+     <sizePolicy vertical="Fixed" horizontal="Fixed"/>
+    </prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Noto Sans,-1,20,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">620 18.25</prop>
+    <prop name="Size">125 24</prop>
+    <prop name="BorderStyle">Styled</prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">БЭЛП</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(mapping event)
+{
+  ChildPanelOnCentral(&quot;faceplates/BELP/3A05belp.xml&quot;, &quot;БЭЛП, куст 3A05&quot;, makeDynString());
+}
+]]></script>
+   </events>
+  </shape>
+  <shape Name="uzou5Btn" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">9</prop>
+    <prop name="Type">NU_BUTTONS</prop>
+    <prop name="RefPoint">754.6215538847117 18</prop>
+    <prop name="Enable">False</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">8</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="minimumSize">125 24</prop>
+    <prop name="maximumSize">125 24</prop>
+    <prop name="sizePolicy">
+     <sizePolicy vertical="Fixed" horizontal="Fixed"/>
+    </prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Noto Sans,-1,20,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">754 18</prop>
+    <prop name="Size">125 24</prop>
+    <prop name="BorderStyle">Styled</prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">УЗОУ №5</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(mapping event)
+{
+  ChildPanelOnCentral(&quot;faceplates/3A-BELP.xml&quot;, &quot;БЭЛП, куст &quot; + clusterTitle,
+                      makeDynString(&quot;$sClusterTitle:&quot; + clusterTitle,
+                                    &quot;$iWellsNumber:&quot; + $iWellsNumber));
+}
+]]></script>
+   </events>
+  </shape>
+  <shape Name="upou5Btn" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">10</prop>
+    <prop name="Type">NU_BUTTONS</prop>
+    <prop name="RefPoint">888.6215538847117 17.75</prop>
+    <prop name="Enable">False</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">9</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="minimumSize">125 24</prop>
+    <prop name="maximumSize">125 24</prop>
+    <prop name="sizePolicy">
+     <sizePolicy vertical="Fixed" horizontal="Fixed"/>
+    </prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Noto Sans,-1,20,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">888 17.75</prop>
+    <prop name="Size">125 23</prop>
+    <prop name="BorderStyle">Styled</prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">УПОУ №5</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(mapping event)
+{
+  ChildPanelOnCentral(&quot;faceplates/3A-BELP.xml&quot;, &quot;БЭЛП, куст &quot; + clusterTitle,
+                      makeDynString(&quot;$sClusterTitle:&quot; + clusterTitle,
+                                    &quot;$iWellsNumber:&quot; + $iWellsNumber));
+}
+]]></script>
+   </events>
+  </shape>
+  <reference parentSerial="-1" Name="PANEL_REF3" referenceId="2">
+   <properties>
+    <prop name="FileName">mnemo/3A-Cluster.xml</prop>
+    <prop name="Location">15.71276891798846 66.67772891053653</prop>
+    <prop name="Geometry">1 0 0 1 -5.712768917988456 -6.67772891053653</prop>
+    <prop name="TabOrder">10</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iClusterIdx</prop>
+      <prop name="Value">5</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iWellsNumber</prop>
+      <prop name="Value">7</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sClusterTitle</prop>
+      <prop name="Value">3A05</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sMalfunctionDPE</prop>
+      <prop name="Value">$sMalfunctionDPE</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF4" referenceId="3">
+   <properties>
+    <prop name="FileName">objects/gasButton.xml</prop>
+    <prop name="Location">241 63.24999237060547</prop>
+    <prop name="Geometry">1 0 0 1 -14.75 -41.5</prop>
+    <prop name="TabOrder">10</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iClusterIdx</prop>
+      <prop name="Value">5</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iWellsNumber</prop>
+      <prop name="Value">7</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sClusterTitle</prop>
+      <prop name="Value">3A05</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <shape Name="ModConnRSU" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">1552</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">45.08315302884375 59.29488953947283</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">stoerKamGingUnq</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">10</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Geometry">1.030108750496056 0 0 1 1341.70532372867 -41.14744476973641</prop>
+    <prop name="Location">45.08315302884375 59.29488953947283</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">MS Shell Dlg 2,-1,20,5,75,0,0,0,0,0,Полужирный</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">Нет связи с PLC РСУ</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+ </shapes>
+</panel>

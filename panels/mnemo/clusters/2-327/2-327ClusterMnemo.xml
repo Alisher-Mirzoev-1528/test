@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="ru_RU.utf8"></prop>
+  </prop>
+  <prop name="Size">1721 849</prop>
+  <prop name="BackColor">sd_grey_almost_white</prop>
+  <prop name="RefPoint">10 10</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">120</prop>
+  <prop name="PDPI">141.5847518580676</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script name="ScopeLib" isEscaped="1"><![CDATA[bool linkRSU;]]></script>
+  <script name="Initialize" isEscaped="1"><![CDATA[main()
+{
+  dpConnect(&quot;modConnectRSU&quot;,
+            &quot;System1:_Mod_Plc_11.ConnState:_online.._value&quot;,
+            &quot;System1:_Mod_Plc_11_2.ConnState:_online.._value&quot;);
+}
+
+void modConnectRSU(string dpe1, int stateHost1,
+                   string dpe2, int stateHost2) {
+  if (stateHost1 != 1 &amp;&amp; stateHost2 != 1)
+  {
+    linkRSU = false;
+    ModConnRSU.visible = true;
+  } else {
+    linkRSU = true;
+    ModConnRSU.visible = false;
+  }
+  if (!linkRSU) {
+    this.backCol = &quot;WF_Border&quot;;
+  } else {
+    this.backCol = &quot;White&quot;;
+  }
+}
+]]></script>
+ </events>
+ <shapes>
+  <shape Name="backplate" shapeType="RECTANGLE" layerId="0">
+   <properties>
+    <prop name="serialId">1</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">80 170</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">{0,0,0}</prop>
+    <prop name="BackColor">sd_grey_ultra_light</prop>
+    <prop name="TabOrder">0</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[none,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">8.071428571428571 0 0 0.4875 -635.7142857142859 -72.875</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">80 170</prop>
+    <prop name="Size">211 81</prop>
+    <prop name="CornerRadius">4</prop>
+    <prop name="Transformable">False</prop>
+   </properties>
+  </shape>
+  <shape Name="mnemoTitle" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">2</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">1660 673.0000000000007</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_grey_darken</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="minimumSize">100 -1</prop>
+    <prop name="layoutAlignment">AlignLeft|AlignLeading</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Geometry">1.356164383561643 0 0 1.441176470588232 -2221.732876712328 -941.1323529411741</prop>
+    <prop name="Location">1660 673.0000000000007</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Arial,-1,15,5,75,0,0,0,0,0,Полужирный</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">Куст 2-327</prop>
+    </prop>
+    <prop name="Distance">0</prop>
+    <prop name="BorderOffset">0</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft|AlignVCenter]</prop>
+   </properties>
+  </shape>
+  <reference parentSerial="-1" Name="PANEL_REF1" referenceId="0">
+   <properties>
+    <prop name="FileName">objects/connectionState.xml</prop>
+    <prop name="Location">139.9558823529387 15.5</prop>
+    <prop name="Geometry">1 0 0 1 0 4.5</prop>
+    <prop name="TabOrder">2</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$dpe</prop>
+      <prop name="Value">System1:_Mod_Plc_11.ConnState</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF2" referenceId="1">
+   <properties>
+    <prop name="FileName">objects/fireState.xml</prop>
+    <prop name="Location">178.9558823529387 20</prop>
+    <prop name="TabOrder">3</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$bInversion</prop>
+      <prop name="Value">FALSE</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$dpe</prop>
+      <prop name="Value">$dpe</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <shape Name="locksBtn" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">6</prop>
+    <prop name="Type">NU_BUTTONS</prop>
+    <prop name="RefPoint">352.6215538847117 18.25</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">5</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="minimumSize">125 24</prop>
+    <prop name="maximumSize">125 24</prop>
+    <prop name="sizePolicy">
+     <sizePolicy vertical="Fixed" horizontal="Fixed"/>
+    </prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Noto Sans,-1,20,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">352 18.25</prop>
+    <prop name="Size">125 24</prop>
+    <prop name="BorderStyle">Styled</prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">Блокировки</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(mapping event)
+{
+  ChildPanelOnCentral(&quot;faceplates/locks/clusterLocks.xml&quot;, &quot;Блокировки 2-327&quot;,
+                      makeDynString(&quot;$sClusterTitle:2-327&quot;));
+}
+]]></script>
+   </events>
+  </shape>
+  <shape Name="belpBtn" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">8</prop>
+    <prop name="Type">NU_BUTTONS</prop>
+    <prop name="RefPoint">486.6215538847117 18.25</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">7</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="minimumSize">125 24</prop>
+    <prop name="maximumSize">125 24</prop>
+    <prop name="sizePolicy">
+     <sizePolicy vertical="Fixed" horizontal="Fixed"/>
+    </prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Noto Sans,-1,20,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">486 18.25</prop>
+    <prop name="Size">125 24</prop>
+    <prop name="BorderStyle">Styled</prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">БЭЛП</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(mapping event)
+{
+  ChildPanelOnCentral(&quot;faceplates/BELP/2-327belp.xml&quot;, &quot;БЭЛП, куст 2-327&quot;,
+                      makeDynString(&quot;$sClusterTitle:2-327&quot;,
+                                    &quot;$iWellsNumber:6&quot;));
+}
+]]></script>
+   </events>
+  </shape>
+  <shape Name="PIPE299" shapeType="PIPE" layerId="0">
+   <properties>
+    <prop name="serialId">168</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">100 710</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_pipe_gas</prop>
+    <prop name="BackColor">sd_pipe_gas</prop>
+    <prop name="TabOrder">14</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="Points">
+     <prop name="Location">100 710</prop>
+     <prop name="Location">100 720</prop>
+     <prop name="Location">120 720</prop>
+    </prop>
+    <prop name="Geometry">47.5202240441846 0 0 1 -4522.022404418461 -119.0985221674879</prop>
+    <prop name="BeginStyle">0</prop>
+    <prop name="EndStyle">0</prop>
+    <prop name="Width">4</prop>
+   </properties>
+  </shape>
+  <shape Name="PIPE301" shapeType="PIPE" layerId="0">
+   <properties>
+    <prop name="serialId">169</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">100 710</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_pipe_gas</prop>
+    <prop name="BackColor">sd_pipe_gas</prop>
+    <prop name="TabOrder">15</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="Points">
+     <prop name="Location">100 710</prop>
+     <prop name="Location">100 720</prop>
+     <prop name="Location">120 720</prop>
+    </prop>
+    <prop name="Geometry">47.02022404418467 0 0 1 -4452.022404418467 -134.6248379569614</prop>
+    <prop name="BeginStyle">0</prop>
+    <prop name="EndStyle">0</prop>
+    <prop name="Width">4</prop>
+   </properties>
+  </shape>
+  <shape Name="PIPE302" shapeType="PIPE" layerId="0">
+   <properties>
+    <prop name="serialId">170</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">100 710</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_pipe_reagent</prop>
+    <prop name="BackColor">sd_pipe_reagent</prop>
+    <prop name="TabOrder">16</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="Points">
+     <prop name="Location">100 710</prop>
+     <prop name="Location">100 720</prop>
+     <prop name="Location">120 720</prop>
+    </prop>
+    <prop name="Geometry">49.32874183074593 0 0 1 -4769.044538805819 -102.2820372398687</prop>
+    <prop name="BeginStyle">0</prop>
+    <prop name="EndStyle">0</prop>
+    <prop name="Width">4</prop>
+   </properties>
+  </shape>
+  <shape Name="PIPE304" shapeType="PIPE" layerId="0">
+   <properties>
+    <prop name="serialId">171</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">1390 760</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_pipe_gas</prop>
+    <prop name="BackColor">sd_pipe_gas</prop>
+    <prop name="TabOrder">17</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="Points">
+     <prop name="Location">1390 760</prop>
+     <prop name="Location">1566 760</prop>
+     <prop name="Location">1566 874</prop>
+    </prop>
+    <prop name="Geometry">0.06818181818181833 0 0 0.9645487956017705 1077.774610753825 -132.2570266662924</prop>
+    <prop name="BeginStyle">0</prop>
+    <prop name="EndStyle">0</prop>
+    <prop name="Width">4</prop>
+   </properties>
+  </shape>
+  <shape Name="PIPE305" shapeType="PIPE" layerId="0">
+   <properties>
+    <prop name="serialId">172</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">1390 760</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_pipe_reagent</prop>
+    <prop name="BackColor">sd_pipe_reagent</prop>
+    <prop name="TabOrder">18</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="Points">
+     <prop name="Location">1390 760</prop>
+     <prop name="Location">1566 760</prop>
+     <prop name="Location">1566 874</prop>
+    </prop>
+    <prop name="Geometry">0.07954545454545602 0 0 1.343002810118369 1039.83629906551 -403.0258353537996</prop>
+    <prop name="BeginStyle">0</prop>
+    <prop name="EndStyle">0</prop>
+    <prop name="Width">4</prop>
+   </properties>
+  </shape>
+  <shape Name="PIPE311" shapeType="PIPE" layerId="0">
+   <properties>
+    <prop name="serialId">495</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">200 700</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_pipe_gas</prop>
+    <prop name="BackColor">sd_pipe_gas</prop>
+    <prop name="TabOrder">21</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="Points">
+     <prop name="Location">200 700</prop>
+     <prop name="Location">291 700</prop>
+    </prop>
+    <prop name="Geometry">5.197802197802195 0 0 1 -307.5823684819949 -23.33333333333337</prop>
+    <prop name="BeginStyle">0</prop>
+    <prop name="EndStyle">0</prop>
+    <prop name="Width">4</prop>
+   </properties>
+  </shape>
+  <reference parentSerial="-1" Name="well1Ref" referenceId="7">
+   <properties>
+    <prop name="FileName">mnemo/clusters/2-327/parts/2-327WellVertical.xml</prop>
+    <prop name="Location">21.45588235293869 48.26900786057308</prop>
+    <prop name="Geometry">1 0 0 1 140.5441176470613 11.73099213942692</prop>
+    <prop name="TabOrder">22</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iWellNumber</prop>
+      <prop name="Value">6</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sMalfunctionDPE</prop>
+      <prop name="Value">$sMalfunctionDPE</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <reference parentSerial="-1" Name="well2Ref" referenceId="8">
+   <properties>
+    <prop name="FileName">mnemo/clusters/2-327/parts/2-327WellVertical.xml</prop>
+    <prop name="Location">21.45588235293869 48.26900786057308</prop>
+    <prop name="Geometry">1 0 0 1 308.5441176470613 11.73099213942692</prop>
+    <prop name="TabOrder">23</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iWellNumber</prop>
+      <prop name="Value">5</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sMalfunctionDPE</prop>
+      <prop name="Value">$sMalfunctionDPE</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <reference parentSerial="-1" Name="well3Ref" referenceId="9">
+   <properties>
+    <prop name="FileName">mnemo/clusters/2-327/parts/2-327WellVertical.xml</prop>
+    <prop name="Location">21.45588235293869 48.26900786057308</prop>
+    <prop name="Geometry">1 0 0 1 478.5441176470613 11.73099213942692</prop>
+    <prop name="TabOrder">24</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iWellNumber</prop>
+      <prop name="Value">4</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sMalfunctionDPE</prop>
+      <prop name="Value">$sMalfunctionDPE</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <reference parentSerial="-1" Name="well4Ref" referenceId="10">
+   <properties>
+    <prop name="FileName">mnemo/clusters/2-327/parts/2-327WellVertical.xml</prop>
+    <prop name="Location">21.45588235293869 48.26900786057308</prop>
+    <prop name="Geometry">1 0 0 1 648.5441176470613 11.73099213942692</prop>
+    <prop name="TabOrder">25</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iWellNumber</prop>
+      <prop name="Value">3</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sMalfunctionDPE</prop>
+      <prop name="Value">$sMalfunctionDPE</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF14" referenceId="13">
+   <properties>
+    <prop name="FileName">mnemo/clusters/2-327/parts/2-327GFU.xml</prop>
+    <prop name="Location">56.53285786253798 658.6593046310514</prop>
+    <prop name="Geometry">1 0 0 1 -24 -2</prop>
+    <prop name="TabOrder">28</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sMalfunctionDPE</prop>
+      <prop name="Value">$sMalfunctionDPE</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <shape Name="PIPE300" shapeType="PIPE" layerId="0">
+   <properties>
+    <prop name="serialId">1197</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">100 710</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_pipe_gas</prop>
+    <prop name="BackColor">sd_pipe_gas</prop>
+    <prop name="TabOrder">29</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="Points">
+     <prop name="Location">100 710</prop>
+     <prop name="Location">100 720</prop>
+     <prop name="Location">120 720</prop>
+    </prop>
+    <prop name="Geometry">43.44759513032154 0 0 1 -4074.759513032153 -150.7117944787001</prop>
+    <prop name="BeginStyle">0</prop>
+    <prop name="EndStyle">0</prop>
+    <prop name="Width">4</prop>
+   </properties>
+  </shape>
+  <shape Name="PIPE282" shapeType="PIPE" layerId="0">
+   <properties>
+    <prop name="serialId">1198</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">1390 760</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_pipe_gas</prop>
+    <prop name="BackColor">sd_pipe_gas</prop>
+    <prop name="TabOrder">30</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="Points">
+     <prop name="Location">1390 760</prop>
+     <prop name="Location">1566 760</prop>
+     <prop name="Location">1566 874</prop>
+    </prop>
+    <prop name="Geometry">0.06818181818181833 0 0 0.7079981971815782 1036.179175333705 31.20957566330055</prop>
+    <prop name="BeginStyle">0</prop>
+    <prop name="EndStyle">0</prop>
+    <prop name="Width">4</prop>
+   </properties>
+  </shape>
+  <shape Name="PIPE310" shapeType="PIPE" layerId="0">
+   <properties>
+    <prop name="serialId">1199</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">870 670</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_pipe_gas</prop>
+    <prop name="BackColor">sd_pipe_gas</prop>
+    <prop name="TabOrder">31</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="Points">
+     <prop name="Location">870 670</prop>
+     <prop name="Location">920 670</prop>
+     <prop name="Location">920 650</prop>
+    </prop>
+    <prop name="Geometry">8.263038052129525 0 0 0.5885359325349555 -6458.843105352687 263.2367437835167</prop>
+    <prop name="BeginStyle">0</prop>
+    <prop name="EndStyle">0</prop>
+    <prop name="Width">4</prop>
+   </properties>
+  </shape>
+  <reference parentSerial="-1" Name="PANEL_REF15" referenceId="14">
+   <properties>
+    <prop name="FileName">mnemo/clusters/2-327/parts/2-327Hub.xml</prop>
+    <prop name="Location">1162.09495707417 415.5635643622713</prop>
+    <prop name="Geometry">1 0 0 1 0 1</prop>
+    <prop name="TabOrder">32</prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF16" referenceId="16">
+   <properties>
+    <prop name="FileName">objects/DI-M15/DI-Common.xml</prop>
+    <prop name="Location">0 0</prop>
+    <prop name="Geometry">1 0 0 1 860 690</prop>
+    <prop name="TabOrder">39</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$bIsAlarm</prop>
+      <prop name="Value">FALSE</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$bIsPCS</prop>
+      <prop name="Value">FALSE</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$diDP</prop>
+      <prop name="Value">2-327_0_SB1</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sDirection</prop>
+      <prop name="Value">down</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF17" referenceId="17">
+   <properties>
+    <prop name="FileName">objects/DI-M15/DI-Common.xml</prop>
+    <prop name="Location">0 0</prop>
+    <prop name="Geometry">1 0 0 1 920 690</prop>
+    <prop name="TabOrder">40</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$bIsAlarm</prop>
+      <prop name="Value">FALSE</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$bIsPCS</prop>
+      <prop name="Value">FALSE</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$diDP</prop>
+      <prop name="Value">2-327_0_SK1</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sDirection</prop>
+      <prop name="Value">down</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF19" referenceId="18">
+   <properties>
+    <prop name="FileName">objects/DI-M15/DI-Common.xml</prop>
+    <prop name="Location">0 0</prop>
+    <prop name="Geometry">1 0 0 1 979.4840498237691 690</prop>
+    <prop name="TabOrder">41</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$bIsAlarm</prop>
+      <prop name="Value">FALSE</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$bIsPCS</prop>
+      <prop name="Value">FALSE</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$diDP</prop>
+      <prop name="Value">2-327_0_G1_G4_Diag</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sDirection</prop>
+      <prop name="Value">down</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF20" referenceId="19">
+   <properties>
+    <prop name="FileName">mnemo/clusters/2-327/parts/2-327WellVertical.xml</prop>
+    <prop name="Location">21.45588235293869 48.26900786057308</prop>
+    <prop name="Geometry">1 0 0 1 818.5441176470613 11.73099213942692</prop>
+    <prop name="TabOrder">42</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iWellNumber</prop>
+      <prop name="Value">2</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sMalfunctionDPE</prop>
+      <prop name="Value">$sMalfunctionDPE</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF21" referenceId="20">
+   <properties>
+    <prop name="FileName">mnemo/clusters/2-327/parts/2-327WellVertical.xml</prop>
+    <prop name="Location">21.45588235293869 48.26900786057308</prop>
+    <prop name="Geometry">1 0 0 1 988.5441176470613 11.73099213942692</prop>
+    <prop name="TabOrder">42</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iWellNumber</prop>
+      <prop name="Value">1</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sMalfunctionDPE</prop>
+      <prop name="Value">$sMalfunctionDPE</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <shape Name="PUSH_BUTTON2" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">1693</prop>
+    <prop name="Type">TEST_SZO_BUTTON</prop>
+    <prop name="RefPoint">1220 380</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">42</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Noto Sans,-1,20,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">1220 366</prop>
+    <prop name="Size">205 51</prop>
+    <prop name="BorderStyle">Styled</prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">Опробование СЗО</prop>
+    </prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(mapping event)
+{
+  string dpe = &quot;2-327_0_ClusterSZOActivation.&quot;;
+  dpSetWait(dpe, 1);
+
+  this.enabled(false);
+  delay(5);
+  this.enabled(true);
+}
+]]></script>
+   </events>
+  </shape>
+  <shape Name="StopClusterBtn" shapeType="PUSH_BUTTON" layerId="0">
+   <properties>
+    <prop name="serialId">1694</prop>
+    <prop name="Type">StopClusterBtn</prop>
+    <prop name="RefPoint">1440 380</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_ButtonText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">43</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Noto Sans,-1,20,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Location">1440 366</prop>
+    <prop name="Size">205 51</prop>
+    <prop name="BorderStyle">Styled</prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">Останов куста</prop>
+    </prop>
+    <prop name="IsToggle">True</prop>
+   </properties>
+   <events>
+    <script name="Clicked" isEscaped="1"><![CDATA[main(mapping event)
+{
+  string dpe = &quot;2-327_0_ClusterStopCommand.&quot;;
+  bool stopCluster = this.toggleState();
+  mapping result;
+  if (stopCluster) {
+    openDialog(&quot;faceplates/dialogs/confirmAction.xml&quot;,
+               makeDynString(&quot;$sMsg:Вы действительно хотите произвести\nостанов куста?&quot;), result);
+    if (result[&quot;Answer&quot;])
+      dpSetWait(dpe, 1);
+    else
+      this.toggleState(false);
+  }
+  else {
+    openDialog(&quot;faceplates/dialogs/confirmAction.xml&quot;,
+               makeDynString(&quot;$sMsg:Вы действительно хотите произвести\nпуск куста?&quot;), result);
+    if (result[&quot;Answer&quot;])
+      dpSetWait(dpe, 0);
+    else
+      this.toggleState(true);
+  }
+}
+]]></script>
+    <script name="Initialize" isEscaped="1"><![CDATA[main()
+{
+  string dpe = &quot;2-327_0_ClusterStopCommand.&quot;;
+  if (dpExists(dpe))
+    dpConnect(&quot;updateStateCB&quot;, dpe);
+  else
+    this.enabled(false);
+}
+
+void updateStateCB(string dpe, bool state)
+{
+  this.toggleState(state);
+  if (state)
+    this.text(&quot;Пуск куста&quot;);
+  else
+    this.text(&quot;Останов куста&quot;);
+}
+]]></script>
+   </events>
+  </shape>
+  <shape Name="backplate2" shapeType="RECTANGLE" layerId="0">
+   <properties>
+    <prop name="serialId">2188</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">80 170</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">{0,0,0}</prop>
+    <prop name="BackColor">sd_grey_ultra_light</prop>
+    <prop name="TabOrder">52</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[none,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1.526190476190475 0 0 3.287500000000001 1257.904761904762 -508.8750000000001</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">80 170</prop>
+    <prop name="Size">211 81</prop>
+    <prop name="CornerRadius">4</prop>
+    <prop name="Transformable">False</prop>
+   </properties>
+  </shape>
+  <reference parentSerial="-1" Name="PANEL_REF22" referenceId="21">
+   <properties>
+    <prop name="FileName">objects/simpleIndicator.xml</prop>
+    <prop name="Location">30.79166666666697 67</prop>
+    <prop name="Geometry">1 0 0 1 1369.208333333333 42.99999999999997</prop>
+    <prop name="TabOrder">44</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sDPE</prop>
+      <prop name="Value">2-327_BurnerLCS.DI.Mode_AutoMan</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <extended>
+     <prop type="COLOR" name="actColor">sd_not_okay</prop>
+     <prop type="CHAR_STRING" name="description">Режим : 1 - Автоматический; 0 - Ручной 
+</prop>
+    </extended>
+   </properties>
+   <shape GroupPath="" RefShapeSerial="1" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">1 0 0 1 0 -14.99999999999997</prop>
+    </properties>
+   </shape>
+   <shape GroupPath="" RefShapeSerial="2" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">3.333333333333333 0 0 1 -3311.48611111111 -14.99999999999996</prop>
+    </properties>
+   </shape>
+  </reference>
+  <shape Name="PRIMITIVE_TEXT6" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">2191</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">1540.75 69.99999999999989</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_grey_darken</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">53</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">1540.75 69.99999999999989</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Arial,-1,15,5,75,0,0,0,0,0,Полужирный</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">Состояние дискретных входов</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">0</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignHCenter|AlignVCenter]</prop>
+   </properties>
+  </shape>
+  <reference parentSerial="-1" Name="PANEL_REF31" referenceId="22">
+   <properties>
+    <prop name="FileName">objects/simpleIndicator.xml</prop>
+    <prop name="Location">30.79166666666697 67</prop>
+    <prop name="Geometry">1 0 0 1 1369.958333333333 72.99999999999989</prop>
+    <prop name="TabOrder">45</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sDPE</prop>
+      <prop name="Value">2-327_BurnerLCS.DI.CMD_OpenVLV</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <extended>
+     <prop type="COLOR" name="actColor">sd_not_okay</prop>
+     <prop type="CHAR_STRING" name="description">Команда на открытие клапана отправлена
+</prop>
+    </extended>
+   </properties>
+   <shape GroupPath="" RefShapeSerial="1" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">1 0 0 1 0 -14.99999999999997</prop>
+    </properties>
+   </shape>
+   <shape GroupPath="" RefShapeSerial="2" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">3.333333333333334 0 0 1 -3313.236111111109 -14.99999999999999</prop>
+    </properties>
+   </shape>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF32" referenceId="23">
+   <properties>
+    <prop name="FileName">objects/simpleIndicator.xml</prop>
+    <prop name="Location">30.79166666666697 67</prop>
+    <prop name="Geometry">1 0 0 1 1369.208333333333 103</prop>
+    <prop name="TabOrder">46</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sDPE</prop>
+      <prop name="Value">2-327_BurnerLCS.DI.Alarm</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <extended>
+     <prop type="COLOR" name="actColor">sd_not_okay</prop>
+     <prop type="CHAR_STRING" name="description">Получен сигнал Авария
+</prop>
+    </extended>
+   </properties>
+   <shape GroupPath="" RefShapeSerial="1" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">1 0 0 1 0 -14.99999999999997</prop>
+    </properties>
+   </shape>
+   <shape GroupPath="" RefShapeSerial="2" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">3.333333333333334 0 0 1 -3311.48611111111 -15</prop>
+    </properties>
+   </shape>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF33" referenceId="24">
+   <properties>
+    <prop name="FileName">objects/simpleIndicator.xml</prop>
+    <prop name="Location">30.79166666666697 67</prop>
+    <prop name="Geometry">1 0 0 1 1369.208333333333 133</prop>
+    <prop name="TabOrder">47</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sDPE</prop>
+      <prop name="Value">2-327_BurnerLCS.DI.VLV_OpenClose</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <extended>
+     <prop type="COLOR" name="actColor">sd_not_okay</prop>
+     <prop type="CHAR_STRING" name="description">Состояние клапана - Открыт/Закрыт 
+</prop>
+    </extended>
+   </properties>
+   <shape GroupPath="" RefShapeSerial="1" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">1 0 0 1 0 -14.99999999999997</prop>
+    </properties>
+   </shape>
+   <shape GroupPath="" RefShapeSerial="2" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">3.333333333333334 0 0 1 -3311.48611111111 -15</prop>
+    </properties>
+   </shape>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF34" referenceId="25">
+   <properties>
+    <prop name="FileName">objects/simpleIndicator.xml</prop>
+    <prop name="Location">30.79166666666697 67</prop>
+    <prop name="Geometry">1 0 0 1 1369.208333333333 163</prop>
+    <prop name="TabOrder">48</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sDPE</prop>
+      <prop name="Value">2-327_BurnerLCS.DI.Supply_OnOff</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <extended>
+     <prop type="COLOR" name="actColor">sd_not_okay</prop>
+     <prop type="CHAR_STRING" name="description">Состояние искры - ВКЛ/ВЫКЛ 
+</prop>
+    </extended>
+   </properties>
+   <shape GroupPath="" RefShapeSerial="1" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">1 0 0 1 0 -14.99999999999997</prop>
+    </properties>
+   </shape>
+   <shape GroupPath="" RefShapeSerial="2" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">3.333333333333334 0 0 1 -3311.48611111111 -15.00000000000001</prop>
+    </properties>
+   </shape>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF35" referenceId="26">
+   <properties>
+    <prop name="FileName">objects/simpleIndicator.xml</prop>
+    <prop name="Location">30.79166666666697 67</prop>
+    <prop name="Geometry">1 0 0 1 1369.208333333333 223</prop>
+    <prop name="TabOrder">49</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sDPE</prop>
+      <prop name="Value">2-327_BurnerLCS.DI.AlarmGas2</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <extended>
+     <prop type="COLOR" name="actColor">sd_not_okay</prop>
+     <prop type="CHAR_STRING" name="description">Сигнализация газ 20 %
+</prop>
+    </extended>
+   </properties>
+   <shape GroupPath="" RefShapeSerial="1" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">1 0 0 1 0 -15</prop>
+    </properties>
+   </shape>
+   <shape GroupPath="" RefShapeSerial="2" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">3.333333333333334 0 0 1 -3311.48611111111 -15.00000000000001</prop>
+    </properties>
+   </shape>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF36" referenceId="27">
+   <properties>
+    <prop name="FileName">objects/simpleIndicator.xml</prop>
+    <prop name="Location">30.79166666666697 67</prop>
+    <prop name="Geometry">1 0 0 1 1369.208333333333 193</prop>
+    <prop name="TabOrder">50</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sDPE</prop>
+      <prop name="Value">2-327_BurnerLCS.DI.AlarmGas1</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <extended>
+     <prop type="COLOR" name="actColor">sd_not_okay</prop>
+     <prop type="CHAR_STRING" name="description">Сигнализация газ 10 %
+</prop>
+    </extended>
+   </properties>
+   <shape GroupPath="" RefShapeSerial="1" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">1 0 0 1 0 -15</prop>
+    </properties>
+   </shape>
+   <shape GroupPath="" RefShapeSerial="2" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">3.333333333333334 0 0 1 -3311.48611111111 -14.99999999999995</prop>
+    </properties>
+   </shape>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF37" referenceId="28">
+   <properties>
+    <prop name="FileName">objects/simpleIndicator.xml</prop>
+    <prop name="Location">30.79166666666697 67</prop>
+    <prop name="Geometry">1 0 0 1 1369.208333333333 253</prop>
+    <prop name="TabOrder">51</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sDPE</prop>
+      <prop name="Value">2-327_BurnerLCS.DI.GasPurge</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <extended>
+     <prop type="COLOR" name="actColor">sd_not_okay</prop>
+     <prop type="CHAR_STRING" name="description">Идет продувка газом трубопровода
+</prop>
+    </extended>
+   </properties>
+   <shape GroupPath="" RefShapeSerial="1" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">1 0 0 1 0 -15</prop>
+    </properties>
+   </shape>
+   <shape GroupPath="" RefShapeSerial="2" shapeType="RefShape" layerId="0">
+    <properties>
+     <prop type="TRANSFORM" name="transform">3.333333333333334 0 0 1 -3311.48611111111 -14.99999999999993</prop>
+    </properties>
+   </shape>
+  </reference>
+  <reference parentSerial="-1" Name="PANEL_REF38" referenceId="29">
+   <properties>
+    <prop name="FileName">objects/gasButton.xml</prop>
+    <prop name="Location">231 62.125</prop>
+    <prop name="Geometry">1 0 0 1 -4.25 -40.5</prop>
+    <prop name="TabOrder">54</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iClusterIdx</prop>
+      <prop name="Value">2</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iWellsNumber</prop>
+      <prop name="Value">6</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sClusterTitle</prop>
+      <prop name="Value">2-327</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <shape Name="ModConnRSU" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">2728</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">45.08315302884375 59.29488953947283</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">stoerKamGingUnq</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">54</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Geometry">1.030108750496056 0 0 1 1333.559449565035 -41.14744476973641</prop>
+    <prop name="Location">45.08315302884375 59.29488953947283</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">MS Shell Dlg 2,-1,20,5,75,0,0,0,0,0,Полужирный</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">Нет связи с PLC РСУ</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+ </shapes>
+</panel>

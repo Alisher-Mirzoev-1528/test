@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="ru_RU.utf8"></prop>
+  </prop>
+  <prop name="Size">1717 1017</prop>
+  <prop name="BackColor">sd_grey_almost_white</prop>
+  <prop name="RefPoint">-647.5000000000001 79</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">120</prop>
+  <prop name="PDPI">141.5847518580676</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script name="ScopeLib" isEscaped="1"><![CDATA[bool linkRSU;]]></script>
+  <script name="Initialize" isEscaped="1"><![CDATA[main()
+{
+  dpConnect(&quot;modConnectRSU&quot;,
+            &quot;System1:_Mod_Plc_1.ConnState:_online.._value&quot;,
+            &quot;System1:_Mod_Plc_1_2.ConnState:_online.._value&quot;);
+}
+
+void modConnectRSU(string dpe1, int stateHost1,
+                   string dpe2, int stateHost2) {
+  if (stateHost1 != 1 &amp;&amp; stateHost2 != 1)
+  {
+    linkRSU = false;
+    ModConnRSU.visible = true;
+  } else {
+    linkRSU = true;
+    ModConnRSU.visible = false;
+  }
+  if (!linkRSU) {
+    this.backCol = &quot;WF_Border&quot;;
+  } else {
+    this.backCol = &quot;White&quot;;
+  }
+}
+]]></script>
+ </events>
+ <shapes>
+  <shape Name="backplate" shapeType="RECTANGLE" layerId="0">
+   <properties>
+    <prop name="serialId">1</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">80 170</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">{0,0,0}</prop>
+    <prop name="BackColor">sd_grey_ultra_light</prop>
+    <prop name="TabOrder">0</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[none,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">8.071428571428571 0 0 0.4875 -635.7142857142857 -72.875</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">80 170</prop>
+    <prop name="Size">211 81</prop>
+    <prop name="CornerRadius">4</prop>
+    <prop name="Transformable">False</prop>
+   </properties>
+  </shape>
+  <shape Name="mnemoTitle" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">2</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">1660 673.0000000000007</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">sd_grey_darken</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="minimumSize">100 -1</prop>
+    <prop name="layoutAlignment">AlignLeft|AlignLeading</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Geometry">1.455882352941138 0 0 1.441176470588232 -1559.264705882289 -940.4117647058811</prop>
+    <prop name="Location">1660 673.0000000000007</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">Arial,-1,15,5,75,0,0,0,0,0,Полужирный</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">Технологическая схема скважины №4 куста 3А01</prop>
+    </prop>
+    <prop name="Distance">0</prop>
+    <prop name="BorderOffset">0</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignHCenter|AlignVCenter]</prop>
+   </properties>
+  </shape>
+  <reference parentSerial="-1" Name="PANEL_REF1" referenceId="0">
+   <properties>
+    <prop name="FileName">mnemo/3A-Well.xml</prop>
+    <prop name="Location">293.1007306406881 193.976727021374</prop>
+    <prop name="Geometry">1 0 0 1 -21.46739730735459 192.9249999999999</prop>
+    <prop name="TabOrder">2</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iClusterIdx</prop>
+      <prop name="Value">1</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$iWellNumber</prop>
+      <prop name="Value">4</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sClusterTitle</prop>
+      <prop name="Value">3A01</prop>
+     </prop>
+     <prop name="dollarParameter">
+      <prop name="Dollar">$sMalfunctionDPE</prop>
+      <prop name="Value">$sMalfunctionDPE</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <shape Name="ModConnRSU" shapeType="PRIMITIVE_TEXT" layerId="0">
+   <properties>
+    <prop name="serialId">314</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">45.08315302884375 59.29488953947283</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">stoerKamGingUnq</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">2</prop>
+    <prop name="ToolTipText">
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Geometry">1.030108750496056 0 0 1 1239.688935290178 -41.14744476973642</prop>
+    <prop name="Location">45.08315302884375 59.29488953947283</prop>
+    <prop name="Font">
+     <prop name="ru_RU.utf8">MS Shell Dlg 2,-1,20,5,75,0,0,0,0,0,Полужирный</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="ru_RU.utf8">Нет связи с PLC РСУ</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+ </shapes>
+</panel>
